@@ -14,6 +14,11 @@ generator.sentence      # => ...
 generator.sentence      # => ...
 ```
 
+Command line tool `lorem_jp` is available.
+
+    $ lorem_jp
+    blah blah blah ...
+
 ## Installation
 
 Add this line to your application's Gemfile:
