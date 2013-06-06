@@ -22,6 +22,12 @@ class MarkovCalculator
     return if line == 'EOS'
 
     word, type = line.split(%r{\s+})
+
+    if word == '」'
+      sentence_is_terminated
+      return
+    end
+
     return if word == '「' || word == '」'
 
     if @ignore_type
@@ -45,14 +51,7 @@ class MarkovCalculator
 
     # termination
     if %w[ 。 ？ ！ ].include?(word)
-      while @stack[0] != -1
-        add_word_to_candidate -1   # EOS
-
-        @stack.shift
-        @stack << -1
-      end
-
-      clear_stack
+      sentence_is_terminated
     end
 
     return
@@ -113,6 +112,17 @@ class MarkovCalculator
         output_tree_node(handle, child, depth + 1)
       end
     end
+  end
+
+  def sentence_is_terminated
+    while @stack[0] != -1
+      add_word_to_candidate -1   # EOS
+
+      @stack.shift
+      @stack << -1
+    end
+
+    clear_stack
   end
 
   def add_word_to_candidate(word_id)
