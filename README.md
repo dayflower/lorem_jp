@@ -46,7 +46,7 @@ Default dictionary is assembled from out-of-copyright texts provided by [Aozora 
 
 * write document for usage (in README)
 * write document for building custom dictionary
-* write tests
+* write more tests
 
 ## Contributing
 

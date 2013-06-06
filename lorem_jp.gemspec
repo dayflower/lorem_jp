@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
     'build/recipes/789.rb',
     'build/recipes/2363.rb',
     'build/recipes/52960.rb',
+    'test/lorem_jp_spec.rb',
   ]
 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
