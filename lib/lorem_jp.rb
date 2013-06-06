@@ -39,7 +39,7 @@ class LoremJP
   # @option options [Boolean] :lazy       load dictionary file
   #                                       on first generation if true
   def initialize(options = {})
-    @dictionary = dictionary_file(options[:dictionary])
+    @dictionary = options[:dictionary]
     @chain      = options[:chain] || 1
 
     lazy = options[:lazy] || false
@@ -49,7 +49,7 @@ class LoremJP
     @loaded = false
 
     if ! lazy
-      load_dict_from_file(@dictionary)
+      load_dict(@dictionary)
     end
   end
 
@@ -59,7 +59,7 @@ class LoremJP
   # @return [String] Japanese meaningless sentence
   def sentence(options = {})
     unless @loaded
-      load_dict_from_file(@dictionary)
+      load_dict(@dictionary)
     end
 
     chain = options[:chain] || @chain
@@ -91,6 +91,14 @@ class LoremJP
   end
 
   private
+
+  def load_dict(dictionary)
+    if dictionary.respond_to?(:close)
+      load_dict_from_stream(dictionary)
+    else
+      load_dict_from_file(dictionary_file(dictionary))
+    end
+  end
 
   def dictionary_file(filename)
     pathname = nil
