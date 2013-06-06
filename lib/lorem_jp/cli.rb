@@ -3,7 +3,12 @@ require 'lorem_jp'
 require 'optparse'
 
 class LoremJP
+
+  # Class for command line interface of Japanese Lorem Ipsum
+  #
   class CLI
+    # Main routine for command line interface of +lorem_jp+
+    # @return [void]
     def self.main
       dict  = nil
       chain = nil
@@ -27,6 +32,7 @@ class LoremJP
       puts LoremJP.sentence(options)
     end
   end
+
 end
 
 if __FILE__ == $0

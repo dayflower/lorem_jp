@@ -1,12 +1,23 @@
 # -*- coding: utf-8 -*-
 
+# Class for Japanese Lorem Ipsum generation
+#
 class LoremJP
+  # Version number
   VERSION = '0.0.1'
 
+  # Default dictionary directory
   DICTIONARY_DIR     = File.absolute_path('../../data', __FILE__)
+  # Default dictionary file
   DEFAULT_DICTIONARY = File.join(DICTIONARY_DIR, 'dict.txt')
 
   class << self
+    # Singleton interface of {#sentence}
+    # @param [Hash] options
+    # @option options [Integer] :chain number of words considered as
+    #                                  past state in Marcov chain
+    # @option options [String]  :dictionary file name of dictionary
+    # @return [String] Japanese meaningless sentence
     def sentence(options = {})
       return singleton_for_dict(options[:dictionary]).sentence(options)
     end
@@ -23,6 +34,10 @@ class LoremJP
     end
   end
 
+  # @param [Hash] options
+  # @option options [String]  :dictionary file name of dictionary
+  # @option options [Boolean] :lazy       load dictionary file
+  #                                       on first generation if true
   def initialize(options = {})
     @dictionary = dictionary_file(options[:dictionary])
     @chain      = options[:chain] || 1
@@ -38,6 +53,10 @@ class LoremJP
     end
   end
 
+  # @param [Hash] options
+  # @option options [Integer] :chain number of words considered as past state
+  #                                  in Marcov chain
+  # @return [String] Japanese meaningless sentence
   def sentence(options = {})
     unless @loaded
       load_dict_from_file(@dictionary)
