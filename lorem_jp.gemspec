@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
     'bin/lorem_jp',
     'build/make_dict.rb',
     'build/fetcher.rb',
+    'build/recipes/789.rb',
     'build/recipes/2363.rb',
     'build/recipes/52960.rb',
   ]
