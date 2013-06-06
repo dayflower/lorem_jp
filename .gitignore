@@ -11,3 +11,5 @@ doc
 *.gem
 coverage
 tmp
+build/download/
+build/text/

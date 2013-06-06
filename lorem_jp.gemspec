@@ -10,7 +10,22 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/dayflower/lorem_jp/'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = [
+    'lorem_jp.gemspec',
+    'Gemfile',
+    'Rakefile',
+    'LICENSE.txt',
+    'README.md',
+    'lib/lorem_jp.rb',
+    'lib/lorem_jp/cli.rb',
+    'data/dict.txt',
+    'bin/lorem_jp',
+    'build/make_dict.rb',
+    'build/fetcher.rb',
+    'build/recipes/2363.rb',
+    'build/recipes/52960.rb',
+  ]
+
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']

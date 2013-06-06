@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'lorem_jp'
+require 'lorem_jp/cli'
+
+LoremJP::CLI.main

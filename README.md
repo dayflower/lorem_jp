@@ -6,7 +6,7 @@ Japanese Lorem Ipsum generator.
 
 ```ruby
 # Singleton API
-LoremJP.sentence        # => meaningless Japanese sentence
+puts LoremJP.sentence   # => output meaningless Japanese sentence
 
 # Or create an instance and re-use it
 generator = LoremJP.new
